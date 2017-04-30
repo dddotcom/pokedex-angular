@@ -12,7 +12,6 @@
   <body>
 
     <div class="container text-center" ng-controller="HomeCtrl">
-      <h1>Mr. Pokedex 5001</h1>
       <div class="pokedex-container">
         <div class="row">
           <div class="col-xs-5">
@@ -28,6 +27,10 @@
                 <div ng-hide="pokemon.name">
                   <input type="text" ng-model="searchTerm" placeholder="Search name or id">
                   <button class="scrn-btn" ng-hide="pokemon.name" ng-click="search()">Find Pokemon!</button>
+                </div>
+                <div ng-show="error.detail">
+                  <br><br>
+                  <p>{{error.detail}} Try again!</p>
                 </div>
 
                 <div ng-show="pokemon.name">
@@ -146,6 +149,17 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="text">
+      <h1>Mr. Pokedex 5001</h1>
+      <br>
+      A slightly off-center, totally unresponsive pokedex.
+      <br><br>
+      Only looks good at 1440 x 700px, view on other resolutions at own risk. Will fix later, I promise.
+      <br><br>
+      Created with the <a href="https://pokeapi.co/" target="_blank">pokeapi</a> and (gasp) Angular.
+      <br><br>
+      CSS by <a href="https://github.com/dddotcom" target="_blank" rel="noopener">yours truly</a>.
     </div>
   </body>
 </html>
