@@ -1,0 +1,212 @@
+body {
+  font-family: 'Inconsolata', monospace;
+}
+
+input {
+  color: black;
+}
+
+.pokedex {
+  background-color: #c12525;
+  border: 1px black solid;
+}
+
+.left {
+  height: 70vh;
+  width: 65%;
+  float: right;
+}
+
+.col-xs-2 {
+  padding: 0px;
+  margin: 0px;
+  width: 2.66666667%;
+}
+
+.col-xs-5 {
+  padding: 0px;
+}
+
+.middle {
+  height: 70vh;
+  width: 100%;
+  border: 2px solid black;
+}
+
+.middle-middle {
+  margin-top: 5vh;
+  height: 60vh;
+  border: 0.5px solid black;
+  width: 100%;
+}
+
+.right {
+  height: 60vh;
+  width: 65%;
+  float: left;
+  margin-top: 10vh;
+  border-radius: 5px;
+}
+
+.top-leds {
+  border: 2px black solid;
+  height: 10vh;
+  display: inline-block;
+  width: 100%;
+}
+
+.big-led {
+  border: 5px rgb(211,211,211) solid;
+  background-color: rgb(135,206, 235);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 5px 10px;
+  float: left;
+}
+
+.small-led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  float: left;
+  margin: 5px;
+  border: 1px black solid;
+}
+
+.red {
+  background-color: rgb(255,0,0)
+}
+.green {
+  background-color: rgb(0,128,0)
+}
+.yellow {
+  background-color: rgb(255,255,0)
+}
+.black {
+  background-color: black;
+}
+.screen-green {
+  background-color: rgb(81,173, 96);
+}
+.blue {
+  background-color: rgb(41,170,253);
+}
+.white {
+  background-color: white;
+}
+
+.main-screen {
+  background-color: rgba(128,128,128, 1.0);
+  border: 20px rgb(211,211,211) solid;
+  border-radius: 5px;
+  height: 40vh;
+  width: 80%;
+  color: white;
+  overflow:scroll;
+}
+
+.sprites {
+  display: inline-block;
+}
+
+.sprites img {
+  width: 25%;
+  float: left;
+}
+
+.scrn-btn {
+  margin-top: 10px;
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+}
+
+.scrn-btn:hover {
+  background-color: rgb(81,173, 96);
+}
+
+.top-row {
+  margin: 10px 20px;
+  display: inline-block;
+  width: 100%;
+}
+
+.med-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  float: left;
+}
+
+.sm-rectangle-btn {
+  width: 50px;
+  height: 10px;
+  float:left;
+  border: 1px black solid;
+  margin: 10px;
+}
+
+.bottom-row {
+  display: inline-block;
+  width: 100%;
+}
+.lg-rectangle-btn {
+  width: 100px;
+  height: 50px;
+  border: 1px black solid;
+  float:left;
+}
+
+.d-pad {
+  float: left;
+  margin-right: 70px;
+}
+
+.up-down {
+  width: 25px;
+  height: 80px;
+  top: 54.7vh;
+  left: 61.5vh;
+  border-radius: 5px;
+  position: absolute;
+}
+
+.left-right {
+  width: 80px;
+  height: 25px;
+  left: 57.5vh;
+  border-radius: 5px;
+  position: absolute;
+}
+
+.secondary-screen {
+  height:20vh;
+  width: 70%;
+  margin: 30px auto 10px auto;
+  color: white;
+  overflow:scroll;
+}
+
+.buttons {
+  width: 79%;
+  display: inline-block;
+}
+
+.bottom {
+  margin-top: -5px;
+}
+
+.square-btn {
+  width: 20%;
+  height: 35px;
+  float: left;
+  border: 1px black solid;
+  border-radius: 4px;
+  box-shadow: 0 5px #27496d;
+}
+
+.right .bottom-row{
+  margin-top: 15px;
+}

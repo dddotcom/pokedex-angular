@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html ng-app="PokedexAngularApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Pokedex</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+   <script src="js/app.js"></script>
+  </head>
+  <body>
+
+    <div class="container text-center" ng-controller="HomeCtrl">
+      <h1>Mr. Pokedex 5001</h1>
+      <div class="pokedex-container">
+        <div class="row">
+          <div class="col-xs-5">
+            <div class="pokedex left">
+              <div class="top-leds">
+                <div class="big-led"></div>
+                <div class="small-led red"></div>
+                <div class="small-led yellow"></div>
+                <div class="small-led green"></div>
+              </div>
+              <div class="main-screen container">
+                <br>
+                <div ng-hide="pokemon.name">
+                  <input type="text" ng-model="searchTerm" placeholder="Search name or id">
+                  <button class="scrn-btn" ng-hide="pokemon.name" ng-click="search()">Find Pokemon!</button>
+                </div>
+
+                <div ng-show="pokemon.name">
+                  <p>{{pokemon.name}} #{{pokemon.id}}</p>
+                  <div class="sprites">
+                    <img src="{{pokemon.sprites.front_default}}">
+                    <img src="{{pokemon.sprites.back_default}}">
+                    <img src="{{pokemon.sprites.front_shiny}}">
+                    <img src="{{pokemon.sprites.back_shiny}}">
+                  </div>
+                  <p>{{pokemonSpecies.flavor_text_entries[1].flavor_text}}</p>
+                </div>
+
+              </div>
+              <div class="bottom-controls container">
+                <div class="top-row">
+                  <div class="med-btn black">
+                  </div>
+                  <div class="sm-rectangle-btn red">
+                  </div>
+                  <div class="sm-rectangle-btn green">
+                  </div>
+                </div>
+                <div class="bottom-row">
+                  <div class="lg-rectangle-btn screen-green">
+                  </div>
+                  <div class="d-pad">
+                    <div class="controls">
+                      <div class="up-down black">
+                      </div>
+                      <div class="left-right black">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-2">
+            <div class="pokedex middle">
+              <div class="middle-middle">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-5">
+            <div class="pokedex right text-center container">
+              <div class="secondary-screen black">
+                <br>
+                <div ng-hide="pokemon.name">
+                  <p ng-hide="pokemon.name">Hello there I am Dexter!</p>
+                </div>
+                <div ng-show="pokemon.name">
+                  <p>Id: {{pokemon.id}}</p>
+                  <p>Height: {{(pokemon.height* 0.10).toFixed(2)}} meters</p>
+                  <p>Height: {{(pokemon.weight*0.220462).toFixed(2)}} lbs</p>
+                  <p>Type:
+                    <span ng-repeat="t in pokemon.types">
+                      {{t.type.name}},
+                    </span>
+                  </p>
+                </div>
+
+              </div>
+              <div class="buttons">
+                <div class="square-btn blue">
+                </div>
+                <div class="square-btn blue">
+                </div>
+                <div class="square-btn blue">
+                </div>
+                <div class="square-btn blue">
+                </div>
+                <div class="square-btn blue">
+                </div>
+              </div>
+              <div class="buttons bottom">
+                <div class="square-btn blue">
+                </div>
+                <div class="square-btn blue">
+                </div>
+                <div class="square-btn blue">
+                </div>
+                <div class="square-btn blue">
+                </div>
+                <div class="square-btn blue">
+                </div>
+              </div>
+              <div class="buttons">
+                <div class="row">
+                  <div class="small-led red">
+                  </div>
+                  <div class="small-led red">
+                  </div>
+                  <div class="pull-right">
+                    <div class="sm-rectangle-btn black">
+                    </div>
+                    <div class="sm-rectangle-btn black">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="buttons">
+                <div class="square-btn white">
+                </div>
+                <div class="square-btn white">
+                </div>
+                <div class="med-btn yellow pull-right">
+                </div>
+              </div>
+              <div class="buttons bottom-row">
+                <div class="lg-rectangle-btn black pull-left">
+                </div>
+                <div class="lg-rectangle-btn black pull-right">
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
