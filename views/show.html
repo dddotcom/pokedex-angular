@@ -1,0 +1,20 @@
+<h4><strong>{{pokemon.name}} #{{pokemon.id}}</strong></h4>
+<div class="sprites">
+  <img src="{{pokemon.sprites.front_default}}">
+  <img src="{{pokemon.sprites.back_default}}">
+  <img src="{{pokemon.sprites.front_shiny}}">
+  <img src="{{pokemon.sprites.back_shiny}}">
+</div>
+<p>Id: {{pokemon.id}}</p>
+<p>Height: {{(pokemon.height* 0.10).toFixed(2)}} meters</p>
+<p>Height: {{(pokemon.weight*0.220462).toFixed(2)}} lbs</p>
+<p>Type:
+  <span ng-repeat="t in pokemon.types">
+    {{t.type.name}},
+  </span>
+</p>
+<div class="text-left">
+
+  <br>
+  <p>{{pokemonSpecies.flavor_text_entries[1].flavor_text}}</p>
+</div>

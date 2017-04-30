@@ -144,6 +144,12 @@ input {
   background-color: transparent;
   border: 1px solid black;
   color: black;
+  min-width: 105px;
+}
+
+.scrn-btn-white {
+  border: 1px solid white;
+  color: white;
 }
 
 .scrn-btn:hover {
@@ -229,6 +235,15 @@ input {
   border: 1px black solid;
   border-radius: 4px;
   box-shadow: 0 5px #27496d;
+}
+
+.square-btn.white a {
+  color: rgba(128,128,128, 0.8);
+  padding-top: 6px;
+}
+
+.square-btn.white a:hover, a:focus {
+  text-decoration: none;
 }
 
 .right .bottom-row{

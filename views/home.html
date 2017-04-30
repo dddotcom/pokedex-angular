@@ -1,0 +1,22 @@
+<div ng-hide="pokemon.name">
+  <input type="text" ng-model="searchTerm" placeholder="Search by name or id">
+  <button class="scrn-btn" ng-hide="pokemon.name" ng-click="search()">Search!</button>
+  <button class="scrn-btn" ng-hide="pokemon.name" ng-click="go('/favorites')">My Favorites</button>
+</div>
+<div ng-show="error.detail">
+  <br><br>
+  <p>{{error.detail}} Try again!</p>
+</div>
+
+<div ng-show="pokemon.name">
+  <p>{{pokemon.name}} #{{pokemon.id}}</p>
+  <div class="sprites">
+    <img src="{{pokemon.sprites.front_default}}">
+    <img src="{{pokemon.sprites.back_default}}">
+    <img src="{{pokemon.sprites.front_shiny}}">
+    <img src="{{pokemon.sprites.back_shiny}}">
+  </div>
+  <button class="scrn-btn scrn-btn-white" ng-click="addFavorite(pokemon.id, pokemon, pokemonSpecies)">Add to Favorites</button>
+  <br><br>
+  <p>{{pokemonSpecies.flavor_text_entries[1].flavor_text}}</p>
+</div>

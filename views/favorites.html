@@ -1,0 +1,16 @@
+<h4>My Favorites({{numFavs}})</h4>
+
+<div ng-repeat="p in favorites">
+  <!-- clicking on their name should show the full page -->
+  <p><strong>{{p.pokemon.name}} #{{p.pokemon.id}}</strong></p>
+  <div class="sprites">
+    <img src="{{p.pokemon.sprites.front_default}}">
+    <img src="{{p.pokemon.sprites.back_default}}">
+    <img src="{{p.pokemon.sprites.front_shiny}}">
+    <img src="{{p.pokemon.sprites.back_shiny}}">
+  </div>
+  <button class="scrn-btn scrn-btn-white" ng-click="deleteFavorite(p.pokemon.id)">Remove from Favorites</button>
+  <br><br>
+  <p>{{p.pokemonSpecies.flavor_text_entries[1].flavor_text.substring(0,20)}}...</p>
+  <hr>
+</div>

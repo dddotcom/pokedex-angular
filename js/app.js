@@ -1,37 +1,25 @@
-var app = angular.module('PokedexAngularApp', []);
+var app = angular.module('PokedexAngularApp', ['ui.router', 'PokedexControllers'])
 
-app.controller('HomeCtrl', ['$scope', '$http', function($scope, $http) {
-  $scope.pokemon = {};
-  $scope.error = {};
-  $scope.pokemonSpecies = {};
-  $scope.searchTerm
-  $scope.search = function() {
-    var req = {
-      url: 'https://pokeapi.co/api/v2/pokemon/' + $scope.searchTerm,
-      method: 'GET'
-    };
+.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function($stateProvider, $urlRouterProvider, $locationProvider){
+  $urlRouterProvider.otherwise('/');
 
-    var req2 = {
-      url: 'https://pokeapi.co/api/v2/pokemon-species/' + $scope.searchTerm,
-      method: 'GET'
-    };
-
-    $http(req).then(function success(res){
-      console.log(res.data);
-      $scope.error = {};
-      $scope.pokemon = res.data;
-      $http(req2).then(function success(res2){
-        console.log(res2.data);
-        $scope.pokemonSpecies = res2.data;
-      }, function error(res2){
-        $scope.error = res2.data;
-        console.log('error', res2);
-      });
-    }, function error(res){
-      $scope.error = res.data;
-      console.log("error", res);
-    });
-  };
-
-
+  $stateProvider.state('home', {
+    url:'/',
+    templateUrl: './views/home.html',
+    controller: 'HomeCtrl'
+  })
+  .state('favorites', {
+    url:'/favorites',
+    templateUrl: './views/favorites.html',
+    controller: 'HomeCtrl'
+  })
+  .state('404', {
+    url:'/404',
+    templateUrl: './views/404.html'
+  })
+  .state('showFavorite', {
+    url:'/favorites/:id',
+    templateUrl: './views/show.html',
+    controller: 'FavoriteCtrl'
+  });
 }]);
