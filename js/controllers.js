@@ -50,10 +50,13 @@ angular.module("PokedexControllers", ['PokedexServices'])
 
   $scope.addFavorite = function(id, pokemon, pokemonSpecies){
     $scope.favorites = Favorite.add(id, pokemon, pokemonSpecies);
+    $location.path('/favorites');
   };
 
   $scope.deleteFavorite = function(id){
     $scope.favorites = Favorite.delete(id);
+    $scope.numFavs = Object.keys($scope.favorites).length;
+    // $location.path('/favorites');
   };
 
   $scope.go = function(path){

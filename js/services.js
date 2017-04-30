@@ -23,7 +23,7 @@ angular.module('PokedexServices', [])
       }
     },
     delete: function(id){
-      console.log("Deleting pokemon at index " + index + " from local storage");
+      console.log("Deleting pokemon with id " + id + " from local storage");
       if($window.localStorage["favorites"]){
           var temp = JSON.parse($window.localStorage["favorites"]);
           delete temp[id];
