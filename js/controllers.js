@@ -5,8 +5,21 @@ angular.module("PokedexControllers", ['PokedexServices'])
   $scope.pokemon = {};
   $scope.error = {};
   $scope.pokemonSpecies = {};
-  $scope.searchTerm
+  $scope.searchTerm = '';
+  $scope.loadingMsg = '';
+
+  $scope.searchAgain = function(){
+    $scope.pokemon = {};
+    $scope.pokemonSpecies = {};
+    $scope.error = {};
+    $scope.searchTerm = '';
+    $scope.loadingMsg = '';
+  }
+
   $scope.search = function() {
+
+    $scope.loadingMsg = 'Loading...';
+
     var req = {
       url: 'https://pokeapi.co/api/v2/pokemon/' + $scope.searchTerm,
       method: 'GET'
@@ -24,6 +37,7 @@ angular.module("PokedexControllers", ['PokedexServices'])
       $http(req2).then(function success(res2){
         console.log(res2.data);
         $scope.pokemonSpecies = res2.data;
+        $scope.loadingMsg = '';
       }, function error(res2){
         $scope.error = res2.data;
         console.log('error', res2);
@@ -43,7 +57,6 @@ angular.module("PokedexControllers", ['PokedexServices'])
   };
 
   $scope.go = function(path){
-    console.log("go here " + path);
     $location.path(path);
   };
 

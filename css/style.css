@@ -8,9 +8,17 @@ input {
   color: black;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0px;
+.mr-pokedex {
+  font-family: 'Electrolize', sans-serif;
+}
+
+.favorite-link {
+  color: white;
+}
+
+.favorite-link:hover {
+  text-decoration: none;
+  color: rgb(81,173, 96);
 }
 
 .text {

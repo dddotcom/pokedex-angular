@@ -1,8 +1,12 @@
 <h4>My Favorites({{numFavs}})</h4>
 
-<div ng-repeat="p in favorites">
+<div class="favorite" ng-repeat="p in favorites">
   <!-- clicking on their name should show the full page -->
-  <p><strong>{{p.pokemon.name}} #{{p.pokemon.id}}</strong></p>
+  <p><strong>
+    <a href="/#/favorites/{{p.pokemon.id}}">
+      {{p.pokemon.name}} #{{p.pokemon.id}}
+    </a>
+  </strong></p>
   <div class="sprites">
     <img src="{{p.pokemon.sprites.front_default}}">
     <img src="{{p.pokemon.sprites.back_default}}">
