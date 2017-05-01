@@ -28,15 +28,4 @@ angular.module('PokedexServices', [])
       return this.get();
     }
   };
-}])
-.factory('SharedProperties', function(){
-  var errorMessage = '';
-  return {
-    setErrorMessage: function(msg){
-      errorMessage = msg;
-    },
-    getErrorMessage: function(){
-      return errorMessage;
-    }
-  };
-});
+}]);

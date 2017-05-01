@@ -1,5 +1,5 @@
 angular.module("PokedexControllers", ['PokedexServices'])
-.controller('HomeCtrl', ['$scope', '$http', 'Favorite', '$location', 'SharedProperties', function($scope, $http, Favorite, $location, SharedProperties) {
+.controller('HomeCtrl', ['$scope', '$http', 'Favorite', '$location', function($scope, $http, Favorite, $location) {
   $scope.favorites = Favorite.get();
   $scope.keys = Object.keys($scope.favorites);
   $scope.pokemon = {};
@@ -84,22 +84,24 @@ angular.module("PokedexControllers", ['PokedexServices'])
     $scope.favorites = Favorite.get();
     $scope.keys = Object.keys($scope.favorites);
     if($scope.keys[index]){
-      SharedProperties.setErrorMessage('');
       $location.path('/favorites/' + $scope.favorites[$scope.keys[index]]["pokemon"].id)
     } else {
-      SharedProperties.setErrorMessage('Invalid favorite shortcut.');
       $location.path('/favorites/-1')
     }
   };
 
 }])
-.controller('FavoriteCtrl', ['$scope', 'Favorite', '$stateParams', 'SharedProperties', function($scope, Favorite, $stateParams, SharedProperties){
-  $scope.errorMessage = SharedProperties.getErrorMessage();
+.controller('FavoriteCtrl', ['$scope', 'Favorite', '$stateParams', function($scope, Favorite, $stateParams){
   $scope.pokemon = {};
   $scope.pokemonSpecies = {};
   var pokemonid = $stateParams.id;
-  var favorites = Favorite.get();
+  console.log("pokemonid is " + pokemonid);
+  if(pokemonid < 0){
+    $scope.errorMessage = "Invalid favorite shortcut.";
+  }
+
   if(!$scope.errorMessage){
+    var favorites = Favorite.get();
     $scope.pokemon = favorites[pokemonid]["pokemon"];
     $scope.pokemonSpecies = favorites[pokemonid]["pokemonSpecies"];
   }
