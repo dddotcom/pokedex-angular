@@ -190,6 +190,7 @@ input {
   display: inline-block;
   width: 100%;
 }
+
 .lg-rectangle-btn {
   width: 100px;
   height: 50px;
@@ -227,6 +228,12 @@ input {
   overflow:scroll;
 }
 
+.secondary-screen p{
+  padding: 0px 7px;
+  text-align: left;
+  color: rgb(81,173, 96);
+}
+
 .buttons {
   width: 79%;
   display: inline-block;
@@ -245,13 +252,24 @@ input {
   box-shadow: 0 5px #27496d;
 }
 
-.square-btn.white a {
-  color: rgba(128,128,128, 0.8);
-  padding-top: 6px;
+.square-btn:active {
+  box-shadow: 0 2px #27496d;
+  transform: translateY(2px);
 }
 
-.square-btn.white a:hover, a:focus {
-  text-decoration: none;
+.square-btn i {
+  color: rgba(128,128,128, 0.3);
+  padding-top: 8px;
+}
+.square-btn i:hover {
+  color: rgba(128,128,128, 0.5);
+}
+.square-btn.blue i {
+  color: rgba(128,128,128, 0.5);
+  padding-top: 8px;
+}
+.square-btn.blue i:hover {
+  color: rgba(128,128,128, 0.8);
 }
 
 .right .bottom-row{

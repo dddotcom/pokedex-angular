@@ -62,39 +62,43 @@
             </div>
           </div>
           <div class="col-xs-5">
-            <div class="pokedex right text-center container">
-              <div class="secondary-screen black" ng-controller="HomeCtrl">
+            <div class="pokedex right text-center container" ng-controller="HomeCtrl">
+              <div class="secondary-screen black">
                 <br>
-                <p>Hello there I am Dexter!</p>
+                <p>Hello there. I am Dexter, a digital encyclopedia created by Professor Oak as an invaluable tool to Trainers.</p>
               </div>
               <div class="buttons">
-                <div class="square-btn blue">
-                  <a href="/#/favorites/4">
-                    #4
-                  </a>
+                <div class="square-btn blue" ng-click="showFavorite(0)">
+                  <i ng-show="keys[0]" ng-model="keys[0]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
                 </div>
-                <div class="square-btn blue">
-                  <a href="/#/favorites/55">
-                    #55
-                  </a>
+                <div class="square-btn blue" ng-click="showFavorite(1)">
+                  <i ng-show="keys[1]" ng-model="keys[1]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
                 </div>
-                <div class="square-btn blue">
+                <div class="square-btn blue" ng-click="showFavorite(2)">
+                  <i ng-show="keys[2]" ng-model="keys[2]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
                 </div>
-                <div class="square-btn blue">
+                <div class="square-btn blue" ng-click="showFavorite(3)">
+                  <i ng-show="keys[3]" ng-model="keys[3]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
                 </div>
-                <div class="square-btn blue">
+                <div class="square-btn blue" ng-click="showFavorite(4)">
+                  <i ng-show="keys[4]" ng-model="keys[4]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
                 </div>
               </div>
               <div class="buttons bottom">
-                <div class="square-btn blue">
+                <div class="square-btn blue" ng-click="showFavorite(5)">
+                  <i ng-show="keys[5]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
                 </div>
-                <div class="square-btn blue">
+                <div class="square-btn blue" ng-click="showFavorite(6)">
+                  <i ng-show="keys[6]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
                 </div>
-                <div class="square-btn blue">
+                <div class="square-btn blue" ng-click="showFavorite(7)">
+                  <i ng-show="keys[7]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
                 </div>
-                <div class="square-btn blue">
+                <div class="square-btn blue" ng-click="showFavorite(8)">
+                  <i ng-show="keys[8]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
                 </div>
-                <div class="square-btn blue">
+                <div class="square-btn blue" ng-click="showFavorite(9)">
+                  <i ng-show="keys[9]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
                 </div>
               </div>
               <div class="buttons">
@@ -112,11 +116,11 @@
                 </div>
               </div>
               <div class="buttons">
-                <div class="square-btn white">
-                  <a href="/">Home</a>
+                <div class="square-btn white" ng-click="go('/')">
+                  <i class="fa fa-home" aria-hidden="true"></i>
                 </div>
-                <div class="square-btn white">
-                  <a href="/#/favorites">Favs</a>
+                <div class="square-btn white" ng-click="go('/favorites')">
+                  <i class="fa fa-heart" aria-hidden="true"></i>
                 </div>
                 <div class="med-btn yellow pull-right">
                 </div>

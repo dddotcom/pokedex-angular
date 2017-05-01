@@ -1,7 +1,7 @@
 angular.module("PokedexControllers", ['PokedexServices'])
 .controller('HomeCtrl', ['$scope', '$http', 'Favorite', '$location', function($scope, $http, Favorite, $location) {
   $scope.favorites = Favorite.get();
-  $scope.numFavs = Object.keys($scope.favorites).length;
+  $scope.keys = Object.keys($scope.favorites);
   $scope.pokemon = {};
   $scope.error = {};
   $scope.pokemonSpecies = {};
@@ -49,18 +49,32 @@ angular.module("PokedexControllers", ['PokedexServices'])
   };
 
   $scope.addFavorite = function(id, pokemon, pokemonSpecies){
-    $scope.favorites = Favorite.add(id, pokemon, pokemonSpecies);
+    Favorite.add(id, pokemon, pokemonSpecies);
+    $scope.favorites = Favorite.get();
+    $scope.keys = Object.keys($scope.favorites);
+    console.log($scope.keys);
     $location.path('/favorites');
   };
 
   $scope.deleteFavorite = function(id){
-    $scope.favorites = Favorite.delete(id);
-    $scope.numFavs = Object.keys($scope.favorites).length;
-    // $location.path('/favorites');
+    Favorite.delete(id);
+    $scope.favorites = Favorite.get();
+    $scope.keys = Object.keys($scope.favorites);
+    console.log($scope.keys);
   };
 
   $scope.go = function(path){
     $location.path(path);
+  };
+
+  $scope.showFavorite = function(index){
+    $scope.favorites = Favorite.get();
+    $scope.keys = Object.keys($scope.favorites);
+    if($scope.keys[index]){
+      $location.path('/favorites/' + $scope.favorites[$scope.keys[index]]["pokemon"].id)
+    } else {
+      console.log("nooooo");
+    }
   };
 
 }])
