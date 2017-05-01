@@ -5,8 +5,8 @@
   <button class="scrn-btn" ng-hide="pokemon.name" ng-click="go('/favorites')">My Favorites</button>
 </div>
 <div ng-show="error.detail">
-  <br><br>
-  <p>{{error.detail}} Try again!</p>
+  <br>
+  <p>{{error.detail}}</p>
 </div>
 <div ng-show="loadingMsg">
   <p>{{loadingMsg}}</p>
@@ -22,7 +22,9 @@
     <img ng-src="{{pokemon.sprites.front_shiny}}">
     <img ng-src="{{pokemon.sprites.back_shiny}}">
   </div>
-  <button class="scrn-btn scrn-btn-white" ng-click="addFavorite(pokemon.id, pokemon, pokemonSpecies)">Add to Favorites</button>
+
+  <button class="scrn-btn scrn-btn-white" ng-show="!favorites[pokemon.id]" ng-click="addFavorite(pokemon.id, pokemon, pokemonSpecies)">Add to Favorites</button>
+  <button class="scrn-btn scrn-btn-white" ng-show="favorites[pokemon.id]" disabled>Already Favorited!</button>
   <br><br>
-  <p>{{pokemonSpecies.flavor_text_entries[1].flavor_text}}</p>
+  <p class="text-left">{{pokemonSpecies.flavor_text_entries[1].flavor_text}}</p>
 </div>

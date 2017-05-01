@@ -1,5 +1,5 @@
 angular.module("PokedexControllers", ['PokedexServices'])
-.controller('HomeCtrl', ['$scope', '$http', 'Favorite', '$location', function($scope, $http, Favorite, $location) {
+.controller('HomeCtrl', ['$scope', '$http', 'Favorite', '$location', 'SharedProperties', function($scope, $http, Favorite, $location, SharedProperties) {
   $scope.favorites = Favorite.get();
   $scope.keys = Object.keys($scope.favorites);
   $scope.pokemon = {};
@@ -17,8 +17,21 @@ angular.module("PokedexControllers", ['PokedexServices'])
   }
 
   $scope.search = function() {
+    //if empty show a message
+    if($scope.searchTerm === ''){
+      $scope.error.detail = "Please enter a search term";
+      return;
+    }
 
     $scope.loadingMsg = 'Loading...';
+
+    //check if we have already cached the data
+    if($scope.favorites[$scope.searchTerm]){
+      $scope.loadingMsg = '';
+      $scope.pokemon = $scope.favorites[$scope.searchTerm]["pokemon"];
+      $scope.pokemonSpecies = $scope.favorites[$scope.searchTerm]["pokemonSpecies"];
+      return;
+    }
 
     var req = {
       url: 'https://pokeapi.co/api/v2/pokemon/' + $scope.searchTerm,
@@ -39,10 +52,12 @@ angular.module("PokedexControllers", ['PokedexServices'])
         $scope.pokemonSpecies = res2.data;
         $scope.loadingMsg = '';
       }, function error(res2){
+        $scope.loadingMsg = '';
         $scope.error = res2.data;
         console.log('error', res2);
       });
     }, function error(res){
+      $scope.loadingMsg = '';
       $scope.error = res.data;
       console.log("error", res);
     });
@@ -52,7 +67,6 @@ angular.module("PokedexControllers", ['PokedexServices'])
     Favorite.add(id, pokemon, pokemonSpecies);
     $scope.favorites = Favorite.get();
     $scope.keys = Object.keys($scope.favorites);
-    console.log($scope.keys);
     $location.path('/favorites');
   };
 
@@ -60,7 +74,6 @@ angular.module("PokedexControllers", ['PokedexServices'])
     Favorite.delete(id);
     $scope.favorites = Favorite.get();
     $scope.keys = Object.keys($scope.favorites);
-    console.log($scope.keys);
   };
 
   $scope.go = function(path){
@@ -71,16 +84,23 @@ angular.module("PokedexControllers", ['PokedexServices'])
     $scope.favorites = Favorite.get();
     $scope.keys = Object.keys($scope.favorites);
     if($scope.keys[index]){
+      SharedProperties.setErrorMessage('');
       $location.path('/favorites/' + $scope.favorites[$scope.keys[index]]["pokemon"].id)
     } else {
-      console.log("nooooo");
+      SharedProperties.setErrorMessage('Invalid favorite shortcut.');
+      $location.path('/favorites/-1')
     }
   };
 
 }])
-.controller('FavoriteCtrl', ['$scope', 'Favorite', '$stateParams', function($scope, Favorite, $stateParams){
+.controller('FavoriteCtrl', ['$scope', 'Favorite', '$stateParams', 'SharedProperties', function($scope, Favorite, $stateParams, SharedProperties){
+  $scope.errorMessage = SharedProperties.getErrorMessage();
+  $scope.pokemon = {};
+  $scope.pokemonSpecies = {};
   var pokemonid = $stateParams.id;
   var favorites = Favorite.get();
-  $scope.pokemon = favorites[pokemonid]["pokemon"];
-  $scope.pokemonSpecies = favorites[pokemonid]["pokemonSpecies"];
+  if(!$scope.errorMessage){
+    $scope.pokemon = favorites[pokemonid]["pokemon"];
+    $scope.pokemonSpecies = favorites[pokemonid]["pokemonSpecies"];
+  }
 }]);
