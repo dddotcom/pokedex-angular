@@ -1,8 +1,23 @@
 angular.module('PokedexServices', [])
 // use $localStorage
-.factory('SearchHistory', function(){
+.factory('SearchHistory', [ 'Favorite', function(Favorite){
   var searchedPokemon = {};
   var nameToId ={};
+
+  if(Object.keys(searchedPokemon).length === 0){
+    sync();
+  }
+
+  function sync(){
+    //sync from favorites
+    console.log("initial load: populating searched pokemon with stuff from favorites")
+    searchedPokemon = Favorite.get();
+    for(var id in searchedPokemon){
+      var name = searchedPokemon[id]["pokemon"].name;
+      nameToId[name] = id;
+    }
+  }
+
   return {
     add: function(pokemon, pokemonSpecies){
       searchedPokemon[pokemon.id] = {};
@@ -14,7 +29,7 @@ angular.module('PokedexServices', [])
       return {searchedPokemon: searchedPokemon, nameToId: nameToId};
     }
   }
-})
+}])
 .factory('Favorite', ["$window", function($window){
   return {
     add: function(id, pokemon, pokemonSpecies){
