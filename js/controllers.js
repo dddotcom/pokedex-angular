@@ -9,7 +9,6 @@ angular.module("PokedexControllers", ['PokedexServices'])
   $scope.loadingMsg = '';
 
   $scope.searchAgain = function(){
-    console.log("searchAgain called");
     $scope.pokemon = {};
     $scope.pokemonSpecies = {};
     $scope.error = {};
@@ -46,22 +45,18 @@ angular.module("PokedexControllers", ['PokedexServices'])
     };
 
     $http(req).then(function success(res){
-      console.log(res.data);
       $scope.error = {};
       $scope.pokemon = res.data;
       $http(req2).then(function success(res2){
-        console.log(res2.data);
         $scope.pokemonSpecies = res2.data;
         $scope.loadingMsg = '';
       }, function error(res2){
         $scope.loadingMsg = '';
         $scope.error = res2.data;
-        console.log('error', res2);
       });
     }, function error(res){
       $scope.loadingMsg = '';
       $scope.error = res.data;
-      console.log("error", res);
     });
   };
 
@@ -100,7 +95,6 @@ angular.module("PokedexControllers", ['PokedexServices'])
   $scope.favorites = Favorite.get();
   $scope.keys = Object.keys($scope.favorites);
   var pokemonid = $stateParams.id;
-  console.log("pokemonid is " + pokemonid);
   if(pokemonid < 0){
     $scope.errorMessage = "Invalid favorite shortcut.";
   }
