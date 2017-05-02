@@ -37,6 +37,11 @@
             <button class="scrn-btn scrn-btn-white" ng-show="!favorites[pokemon.id]" ng-click="addFavorite(pokemon.id, pokemon, pokemonSpecies)">Add to Favorites</button>
             <button class="scrn-btn scrn-btn-white" ng-show="favorites[pokemon.id]" disabled>Already Favorited!</button>
             <br><br>
+            <small class="text-left">
+              Also known as {{pokemonSpecies.names[4].name}} in French,
+              and {{pokemonSpecies.names[8].name}} ({{pokemonSpecies.names[7].name}}) in Japanese.
+            </small>
+            <br><br>
             <p>Height: {{(pokemon.height* 0.10).toFixed(2)}} meters</p>
             <p>Weight: {{(pokemon.weight*0.220462).toFixed(2)}} lbs</p>
             <p>Type:

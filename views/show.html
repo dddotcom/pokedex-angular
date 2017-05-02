@@ -24,6 +24,11 @@
               <img src="{{pokemon.sprites.front_shiny}}">
               <img src="{{pokemon.sprites.back_shiny}}">
             </div>
+            <small class="text-left">
+              Also known as {{pokemonSpecies.names[4].name}} in French,
+              and {{pokemonSpecies.names[8].name}} ({{pokemonSpecies.names[7].name}}) in Japanese.
+            </small>
+            <br><br>
             <p>Height: {{(pokemon.height* 0.10).toFixed(2)}} meters</p>
             <p>Weight: {{(pokemon.weight*0.220462).toFixed(2)}} lbs</p>
             <p>Type:
@@ -32,7 +37,6 @@
               </span>
             </p>
             <div class="text-left">
-
               <br>
               <p>{{pokemonSpecies.flavor_text_entries[1].flavor_text}}</p>
             </div>
