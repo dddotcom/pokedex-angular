@@ -29,20 +29,20 @@ angular.module("PokedexControllers", ['PokedexServices'])
     //check if we have already cached the data
     //serach by id
     if(SearchHistory.get()["searchedPokemon"][$scope.searchTerm]){
-      // console.log("we've already searched this by id");
+      console.log("we've already searched this by id");
       $scope.loadingMsg = '';
       $scope.pokemon = SearchHistory.get()["searchedPokemon"][$scope.searchTerm]["pokemon"];
       $scope.pokemonSpecies = SearchHistory.get()["searchedPokemon"][$scope.searchTerm]["pokemonSpecies"];
       return;
     } else if (SearchHistory.get()["nameToId"][$scope.searchTerm]){ //searched by name
-      // console.log("we've already searched this by name");
+      console.log("we've already searched this by name");
       var id = SearchHistory.get()["nameToId"][$scope.searchTerm]
       $scope.loadingMsg = '';
       $scope.pokemon = SearchHistory.get()["searchedPokemon"][id]["pokemon"];
       $scope.pokemonSpecies = SearchHistory.get()["searchedPokemon"][id]["pokemonSpecies"];
       return;
     } else if ($scope.favorites[$scope.searchTerm]){ //we've favorited it in a previous session
-      // console.log("we've favorited it in a previous session");
+      console.log("we've favorited it in a previous session");
       $scope.loadingMsg = '';
       $scope.pokemon = $scope.favorites[$scope.searchTerm]["pokemon"];
       $scope.pokemonSpecies = $scope.favorites[$scope.searchTerm]["pokemonSpecies"];
