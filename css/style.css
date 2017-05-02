@@ -46,8 +46,6 @@ input {
 .left {
   height: 489.3px;
   width: 316.88px;
-  /*height: 70vh;
-  width: 65%;*/
   float: right;
 }
 
@@ -62,20 +60,16 @@ input {
 }
 
 .middle {
-  /*height: 70vh;
-  width: 100%;*/
+  width: 100%;
   height: 489.3px;
-  width: 27.19px;
   border: 2px solid black;
 }
 
 .middle-middle {
   margin-top: 5vh;
-  width: 27.19px;
   height: 419.39px;
-  /*height: 60vh;*/
   border: 0.5px solid black;
-  /*width: 100%;*/
+  width: 100%;
 }
 
 .right {
@@ -221,21 +215,21 @@ input {
 .up-down {
   width: 25px;
   height: 80px;
-  /*top: 55.0vh;
-  left: 61.5vh;*/
   bottom: 22px;
-  left: 422px;
+  left: 141px;
+  z-index: 5;
   border-radius: 5px;
-  position: absolute;
+  position: relative;
 }
 
 .left-right {
   width: 80px;
   height: 25px;
-  /*left: 57.5vh;*/
-  left: 395px;
+  left: 112px;
+  bottom: 75px;
+  z-index: 5;
   border-radius: 5px;
-  position: absolute;
+  position: relative;
 }
 
 .secondary-screen {
