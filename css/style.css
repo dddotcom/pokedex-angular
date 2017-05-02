@@ -269,14 +269,14 @@ input {
   padding-top: 8px;
 }
 .square-btn i:hover {
-  color: rgba(128,128,128, 0.5);
+  color: rgba(81,173, 96, 0.6);
 }
 .square-btn.blue i {
-  color: rgba(128,128,128, 0.5);
+  color: rgba(0,250,253, 0.3);
   padding-top: 8px;
 }
 .square-btn.blue i:hover {
-  color: rgba(128,128,128, 0.8);
+  color: rgba(0,250,253, 0.8);
 }
 
 .right .bottom-row{
