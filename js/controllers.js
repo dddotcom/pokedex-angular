@@ -132,4 +132,10 @@ angular.module("PokedexControllers", ['PokedexServices'])
   $scope.go = function(path){
     $location.path(path);
   };
+}])
+.controller('IndexCtrl', ['$scope', function($scope){
+  $scope.openWindow = function(){
+    // window.open("http://localhost:8080", "Resized", "width=1440,height=700");
+    window.open("https://dddotcom.github.io/pokedex-angular/#/", "Resized", "width=1440,height=700");
+  };
 }]);
