@@ -25,7 +25,7 @@
               <img src="{{pokemon.sprites.back_shiny}}">
             </div>
             <p>Height: {{(pokemon.height* 0.10).toFixed(2)}} meters</p>
-            <p>Height: {{(pokemon.weight*0.220462).toFixed(2)}} lbs</p>
+            <p>Weight: {{(pokemon.weight*0.220462).toFixed(2)}} lbs</p>
             <p>Type:
               <span ng-repeat="t in pokemon.types">
                 {{t.type.name}},
