@@ -1,5 +1,20 @@
 angular.module('PokedexServices', [])
 // use $localStorage
+.factory('SearchHistory', function(){
+  var searchedPokemon = {};
+  var nameToId ={};
+  return {
+    add: function(pokemon, pokemonSpecies){
+      searchedPokemon[pokemon.id] = {};
+      searchedPokemon[pokemon.id]["pokemon"] = pokemon;
+      searchedPokemon[pokemon.id]["pokemonSpecies"] = pokemonSpecies;
+      nameToId[pokemon.name] = pokemon.id;
+    },
+    get: function(){
+      return {searchedPokemon: searchedPokemon, nameToId: nameToId};
+    }
+  }
+})
 .factory('Favorite', ["$window", function($window){
   return {
     add: function(id, pokemon, pokemonSpecies){

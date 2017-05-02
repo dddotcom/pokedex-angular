@@ -1,5 +1,5 @@
 angular.module("PokedexControllers", ['PokedexServices'])
-.controller('HomeCtrl', ['$scope', '$http', 'Favorite', '$location', function($scope, $http, Favorite, $location) {
+.controller('HomeCtrl', ['$scope', '$http', 'Favorite', '$location', 'SearchHistory', function($scope, $http, Favorite, $location, SearchHistory) {
   $scope.favorites = Favorite.get();
   $scope.keys = Object.keys($scope.favorites);
   $scope.pokemon = {};
@@ -27,7 +27,22 @@ angular.module("PokedexControllers", ['PokedexServices'])
     $scope.searchTerm = $scope.searchTerm.toLowerCase();
 
     //check if we have already cached the data
-    if($scope.favorites[$scope.searchTerm]){
+    //serach by id
+    if(SearchHistory.get()["searchedPokemon"][$scope.searchTerm]){
+      // console.log("we've already searched this by id");
+      $scope.loadingMsg = '';
+      $scope.pokemon = SearchHistory.get()["searchedPokemon"][$scope.searchTerm]["pokemon"];
+      $scope.pokemonSpecies = SearchHistory.get()["searchedPokemon"][$scope.searchTerm]["pokemonSpecies"];
+      return;
+    } else if (SearchHistory.get()["nameToId"][$scope.searchTerm]){ //searched by name
+      // console.log("we've already searched this by name");
+      var id = SearchHistory.get()["nameToId"][$scope.searchTerm]
+      $scope.loadingMsg = '';
+      $scope.pokemon = SearchHistory.get()["searchedPokemon"][id]["pokemon"];
+      $scope.pokemonSpecies = SearchHistory.get()["searchedPokemon"][id]["pokemonSpecies"];
+      return;
+    } else if ($scope.favorites[$scope.searchTerm]){ //we've favorited it in a previous session
+      // console.log("we've favorited it in a previous session");
       $scope.loadingMsg = '';
       $scope.pokemon = $scope.favorites[$scope.searchTerm]["pokemon"];
       $scope.pokemonSpecies = $scope.favorites[$scope.searchTerm]["pokemonSpecies"];
@@ -50,6 +65,7 @@ angular.module("PokedexControllers", ['PokedexServices'])
       $http(req2).then(function success(res2){
         $scope.pokemonSpecies = res2.data;
         $scope.loadingMsg = '';
+        SearchHistory.add($scope.pokemon, $scope.pokemonSpecies);
       }, function error(res2){
         $scope.loadingMsg = '';
         $scope.error = res2.data;
