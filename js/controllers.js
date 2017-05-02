@@ -9,6 +9,7 @@ angular.module("PokedexControllers", ['PokedexServices'])
   $scope.loadingMsg = '';
 
   $scope.searchAgain = function(){
+    console.log("searchAgain called");
     $scope.pokemon = {};
     $scope.pokemonSpecies = {};
     $scope.error = {};
@@ -24,6 +25,7 @@ angular.module("PokedexControllers", ['PokedexServices'])
     }
 
     $scope.loadingMsg = 'Loading...';
+    $scope.searchTerm = $scope.searchTerm.toLowerCase();
 
     //check if we have already cached the data
     if($scope.favorites[$scope.searchTerm]){
@@ -77,6 +79,7 @@ angular.module("PokedexControllers", ['PokedexServices'])
   };
 
   $scope.go = function(path){
+    $scope.searchAgain();
     $location.path(path);
   };
 
@@ -91,9 +94,11 @@ angular.module("PokedexControllers", ['PokedexServices'])
   };
 
 }])
-.controller('FavoriteCtrl', ['$scope', 'Favorite', '$stateParams', function($scope, Favorite, $stateParams){
+.controller('FavoriteCtrl', ['$scope', 'Favorite', '$stateParams', '$location', function($scope, Favorite, $stateParams, $location){
   $scope.pokemon = {};
   $scope.pokemonSpecies = {};
+  $scope.favorites = Favorite.get();
+  $scope.keys = Object.keys($scope.favorites);
   var pokemonid = $stateParams.id;
   console.log("pokemonid is " + pokemonid);
   if(pokemonid < 0){
@@ -105,4 +110,16 @@ angular.module("PokedexControllers", ['PokedexServices'])
     $scope.pokemon = favorites[pokemonid]["pokemon"];
     $scope.pokemonSpecies = favorites[pokemonid]["pokemonSpecies"];
   }
+
+  $scope.showFavorite = function(index){
+    if($scope.keys[index]){
+      $location.path('/favorites/' + $scope.favorites[$scope.keys[index]]["pokemon"].id)
+    } else {
+      $location.path('/favorites/-1')
+    }
+  };
+
+  $scope.go = function(path){
+    $location.path(path);
+  };
 }]);

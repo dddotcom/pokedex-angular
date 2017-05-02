@@ -1,18 +1,136 @@
-<h4 ng-model="keys">My Favorites ({{keys.length}})</h4>
+<div class="pokedex-container">
+  <div class="row">
+    <div class="col-xs-5">
+      <div class="pokedex left">
+        <div class="top-leds">
+          <div class="big-led"></div>
+          <div class="small-led red"></div>
+          <div class="small-led yellow"></div>
+          <div class="small-led green"></div>
+        </div>
+        <div class="main-screen container">
+          <br>
+          <h4 ng-model="keys">My Favorites ({{keys.length}})</h4>
 
-<div ng-repeat="p in favorites">
-  <p><strong>
-    <a class="favorite-link" href="#/favorites/{{p.pokemon.id}}">
-      {{p.pokemon.name}} #{{p.pokemon.id}}
-    </a>
-  </strong></p>
-  <div class="sprites">
-    <img ng-src="{{p.pokemon.sprites.front_default}}">
-    <img ng-src="{{p.pokemon.sprites.back_default}}">
-    <img ng-src="{{p.pokemon.sprites.front_shiny}}">
-    <img ng-src="{{p.pokemon.sprites.back_shiny}}">
+          <div ng-repeat="p in favorites">
+            <p><strong>
+              <a class="favorite-link" href="#/favorites/{{p.pokemon.id}}">
+                {{p.pokemon.name}} #{{p.pokemon.id}}
+              </a>
+            </strong></p>
+            <div class="sprites">
+              <img ng-src="{{p.pokemon.sprites.front_default}}">
+              <img ng-src="{{p.pokemon.sprites.back_default}}">
+              <img ng-src="{{p.pokemon.sprites.front_shiny}}">
+              <img ng-src="{{p.pokemon.sprites.back_shiny}}">
+            </div>
+            <p>{{p.pokemonSpecies.flavor_text_entries[1].flavor_text.substring(0,20)}}...</p>
+            <button class="scrn-btn scrn-btn-white" ng-click="deleteFavorite(p.pokemon.id)">Remove from Favorites</button>
+            <hr>
+          </div>
+        </div>
+        <div class="bottom-controls container">
+          <div class="top-row">
+            <div class="med-btn black">
+            </div>
+            <div class="sm-rectangle-btn red">
+            </div>
+            <div class="sm-rectangle-btn green">
+            </div>
+          </div>
+          <div class="bottom-row">
+            <div class="lg-rectangle-btn screen-green">
+            </div>
+            <div class="d-pad">
+              <div class="controls">
+                <div class="up-down black">
+                </div>
+                <div class="left-right black">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <div class="pokedex middle">
+        <div class="middle-middle">
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-5">
+      <!-- <div class="pokedex right text-center container" ng-controller="HomeCtrl"> -->
+      <div class="pokedex right text-center container">
+        <div class="secondary-screen black">
+          <br>
+          <p>Hello there. I am Dexter, a digital encyclopedia created by Professor Oak as an invaluable tool to Trainers.</p>
+        </div>
+        <div class="buttons">
+          <div class="square-btn blue" ng-click="showFavorite(0)">
+            <i ng-show="keys[0]" ng-model="keys[0]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+          </div>
+          <div class="square-btn blue" ng-click="showFavorite(1)">
+            <i ng-show="keys[1]" ng-model="keys[1]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+          </div>
+          <div class="square-btn blue" ng-click="showFavorite(2)">
+            <i ng-show="keys[2]" ng-model="keys[2]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+          </div>
+          <div class="square-btn blue" ng-click="showFavorite(3)">
+            <i ng-show="keys[3]" ng-model="keys[3]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+          </div>
+          <div class="square-btn blue" ng-click="showFavorite(4)">
+            <i ng-show="keys[4]" ng-model="keys[4]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="buttons bottom">
+          <div class="square-btn blue" ng-click="showFavorite(5)">
+            <i ng-show="keys[5]" ng-model="keys[5]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+          </div>
+          <div class="square-btn blue" ng-click="showFavorite(6)">
+            <i ng-show="keys[6]" ng-model="keys[6]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+          </div>
+          <div class="square-btn blue" ng-click="showFavorite(7)">
+            <i ng-show="keys[7]" ng-model="keys[7]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+          </div>
+          <div class="square-btn blue" ng-click="showFavorite(8)">
+            <i ng-show="keys[8]" ng-model="keys[8]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+          </div>
+          <div class="square-btn blue" ng-click="showFavorite(9)">
+            <i ng-show="keys[9]" ng-model="keys[9]" class="fa fa-dot-circle-o" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="row">
+            <div class="small-led red">
+            </div>
+            <div class="small-led red">
+            </div>
+            <div class="pull-right">
+              <div class="sm-rectangle-btn black">
+              </div>
+              <div class="sm-rectangle-btn black">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="square-btn white" ng-click="go('/')">
+            <i class="fa fa-home" aria-hidden="true"></i>
+          </div>
+          <div class="square-btn white" ng-click="go('/favorites')">
+            <i class="fa fa-heart" aria-hidden="true"></i>
+          </div>
+          <div class="med-btn yellow pull-right">
+          </div>
+        </div>
+        <div class="buttons bottom-row">
+          <div class="lg-rectangle-btn black pull-left">
+          </div>
+          <div class="lg-rectangle-btn black pull-right">
+          </div>
+        </div>
+    </div>
   </div>
-  <p>{{p.pokemonSpecies.flavor_text_entries[1].flavor_text.substring(0,20)}}...</p>
-  <button class="scrn-btn scrn-btn-white" ng-click="deleteFavorite(p.pokemon.id)">Remove from Favorites</button>
-  <hr>
+</div>
 </div>
