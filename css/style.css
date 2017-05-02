@@ -44,8 +44,10 @@ input {
 }
 
 .left {
-  height: 70vh;
-  width: 65%;
+  height: 489.3px;
+  width: 316.88px;
+  /*height: 70vh;
+  width: 65%;*/
   float: right;
 }
 
@@ -60,21 +62,27 @@ input {
 }
 
 .middle {
-  height: 70vh;
-  width: 100%;
+  /*height: 70vh;
+  width: 100%;*/
+  height: 489.3px;
+  width: 27.19px;
   border: 2px solid black;
 }
 
 .middle-middle {
   margin-top: 5vh;
-  height: 60vh;
+  width: 27.19px;
+  height: 419.39px;
+  /*height: 60vh;*/
   border: 0.5px solid black;
-  width: 100%;
+  /*width: 100%;*/
 }
 
 .right {
-  height: 60vh;
-  width: 65%;
+  /*height: 60vh;
+  width: 65%;*/
+  height: 419.39px;
+  width: 316.88px;
   float: left;
   margin-top: 10vh;
   border-radius: 5px;
@@ -213,8 +221,10 @@ input {
 .up-down {
   width: 25px;
   height: 80px;
-  top: 54.7vh;
-  left: 61.5vh;
+  /*top: 55.0vh;
+  left: 61.5vh;*/
+  bottom: 22px;
+  left: 422px;
   border-radius: 5px;
   position: absolute;
 }
@@ -222,7 +232,8 @@ input {
 .left-right {
   width: 80px;
   height: 25px;
-  left: 57.5vh;
+  /*left: 57.5vh;*/
+  left: 395px;
   border-radius: 5px;
   position: absolute;
 }
